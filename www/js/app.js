@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('starter', ['ionic', 'starter.controllers', 'firebase'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -30,23 +30,45 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       controller: 'AppCtrl'
     })
 
-    .state('app.search', {
-      url: "/search",
+    .state('app.auth', {
+      url: "/auth",
       views: {
         'menuContent' :{
-          templateUrl: "templates/search.html"
+          templateUrl: "templates/auth.html",
+          controller: "authCtrl"
         }
       }
     })
 
-    .state('app.browse', {
-      url: "/browse",
+    .state('app.register', {
+      url: "/register",
       views: {
         'menuContent' :{
-          templateUrl: "templates/browse.html"
+          templateUrl: "templates/register.html",
+          controller: "authCtrl"
         }
       }
     })
+
+    .state('app.logout', {
+      url: "/logout",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/logout.html",
+          controller:"authCtrl"
+        }
+      }
+    })
+
+    .state('app.home', {
+      url: "/home",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/home.html"
+        }
+      }
+    })
+
     .state('app.playlists', {
       url: "/playlists",
       views: {
