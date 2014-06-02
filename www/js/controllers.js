@@ -17,7 +17,7 @@ angular.module('starter.controllers', [])
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 })
 
-.controller('authCtrl', function($scope, $stateParams, $location, $firebase) {
+.controller('authCtrl', function($scope, $stateParams, $location, $firebase, $state) {
 	console.log("auth controller is working");
 
 	//Testing out ng-click functionality
@@ -27,8 +27,6 @@ angular.module('starter.controllers', [])
 
 	//Testing out ng-show and ng-hide functionality
 	$scope.toggle = true;
-
-	baseurl = "http://local.rocketu.com/local.rocketu.com/ionic/sidemenuAuth/www/#/app";
 
 	myUser = -1;
 	var ref = new Firebase("https://practicefacebook.firebaseio.com/test2");
@@ -44,7 +42,7 @@ angular.module('starter.controllers', [])
                 console.log('New user registered');
                 doLogin(email, password);
                 console.log("new user logged in");
-                $location.path(baseurl + "/login");
+                $state.go('app.home');
 
             } else {
                 alert(error);
@@ -58,13 +56,13 @@ angular.module('starter.controllers', [])
 		var email = $scope.auth.username;
 		var password = $scope.auth.password;
         doLogin(email, password);
-        $location.path(baseurl + "/home")
+        $state.go('app.home');
 
     };
 
 	$scope.logout = function(){
 		authClient.logout();
-		$location.path(baseurl + "/logout");
+		$state.go('app.auth');
 	}
 
 	function doLogin(email, password) {
