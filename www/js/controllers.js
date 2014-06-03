@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('auth.controllers', [])
 
 .controller('AppCtrl', function($scope) {
 })
