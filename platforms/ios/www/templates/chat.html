@@ -1,0 +1,27 @@
+<ion-view title="chat">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header">
+    <h1> Chat </h1>
+		<div id='messagesDiv'>
+			<h1>Message board</h1>
+			<div ng-repeat = "message in messages">
+				<p>{{message}}</p>
+			</div>
+		</div>
+		<form ng-submit="clicked()">
+		    <label class="item item-input">
+		    	<span class="input-label">Nick Name</span>
+		    	<input type="text" name="religion" ng-model="chat.firstname" placeholder="Your nickname" >
+		    </label>	
+		   	<label class="item item-input">
+		    	<span class="input-label">Message</span>
+		    	<input type="text" name="religion" ng-model="chat.message" placeholder="Message" required>
+		    </label>
+		    <button class="button button-positive button-block"  type="submit">
+		    	Update
+		    </button>
+	    </form>
+  </ion-content>
+</ion-view>
