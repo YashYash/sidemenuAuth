@@ -1,4 +1,4 @@
-pyar.controller('profileCtrl', function($scope, $stateParams, $location, $firebase, $state, Data, authService, $route) {
+pyar.controller('profileCtrl', function($scope, $stateParams, $location, $firebase, $state, Data, authService) {
 	console.log("profile controller is working");
 
   	var ref = new Firebase("https://practicefacebook.firebaseio.com");
@@ -44,28 +44,29 @@ pyar.controller('profileCtrl', function($scope, $stateParams, $location, $fireba
 			})	        
 
 			$scope.profileupdate = function(){
-				var full_name = $scope.profile.full_name;
-				var gender = $scope.profile.gender;
-				var occupation = $scope.profile.occupation;
-				var religion = $scope.profile.religion;
-				var orientation = $scope.profile.orientation;
-				var id = user.id;
+				if (full_name) {
+					var full_name = $scope.profile.full_name;
+					var gender = $scope.profile.gender;
+					var occupation = $scope.profile.occupation;
+					var religion = $scope.profile.religion;
+					var orientation = $scope.profile.orientation;
+					var id = user.id;
 
-				var profile_upload = new Firebase("https://practicefacebook.firebaseio.com/users/" + user.id + "/profile");
+					var profile_upload = new Firebase("https://practicefacebook.firebaseio.com/users/" + user.id + "/profile");
 
-				profile_upload.set({
-					full_name:full_name, 
-					gender:gender, 
-					occupation:occupation, 
-					religion:religion, 
-					orientation:orientation, 
-					id:id 
-				})
+					profile_upload.set({
+						full_name:full_name, 
+						gender:gender, 
+						occupation:occupation, 
+						religion:religion, 
+						orientation:orientation, 
+						id:id 
+					})
 
-				$state.reload();
-
-			}
-
+					$state.go('app.confirm')
+				} else {
+					
+				}
 
 	    } else {
 	        // User is logged out.

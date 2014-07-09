@@ -4,16 +4,17 @@
   </ion-nav-buttons>
   <ion-content class="has-header">
     <h1> Chat </h1>
-		<div id='messagesDiv'>
 			<h1>Message board</h1>
-			<div ng-repeat = "message in messages">
-				<p>{{message}}</p>
+
+			<div ng-repeat="message in all_messages">
+				<ul>
+					<li><p>{{message.name}}: {{message.text}}</p></li>
+				</ul>
 			</div>
-		</div>
 		<form ng-submit="clicked()">
 		    <label class="item item-input">
 		    	<span class="input-label">Nick Name</span>
-		    	<input type="text" name="religion" ng-model="chat.firstname" placeholder="Your nickname" >
+		    	<input type="text" name="religion" ng-model="chat.firstname" value="{{first_name}}" >
 		    </label>	
 		   	<label class="item item-input">
 		    	<span class="input-label">Message</span>

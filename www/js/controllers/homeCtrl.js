@@ -55,6 +55,13 @@ pyar.controller('homeCtrl', function($scope, $stateParams, $location, $firebase,
 
 			}
 
+			$scope.get_everyone = new Firebase("https://practicefacebook.firebaseio.com/users/");
+
+			$scope.get_everyone.once('value', function(dataSnapshot) {
+				myrefSnapshot = dataSnapshot;
+				console.log("everyone:" + myrefSnapshot);
+
+			})	
 
 	    } else {
 	        // User is logged out.

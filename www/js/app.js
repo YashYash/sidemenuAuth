@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-var pyar = angular.module('pyar', ['ionic', 'auth.controllers', 'firebase'])
+var pyar = angular.module('pyar', ['ionic', 'pyar.controllers', 'firebase'])
 
 pyar.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -55,7 +55,17 @@ pyar.config(function($stateProvider, $urlRouterProvider) {
           controller:"profileCtrl"
         }
       }
-    })  
+    })
+
+    .state('app.confirm', {
+      url: "/profile/confirm",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/profile_confirm.html",
+          controller:"profileCtrl"
+        }
+      }
+    })        
      
 
     .state('app.chat', {
@@ -100,7 +110,7 @@ pyar.config(function($stateProvider, $urlRouterProvider) {
     });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('login');
+  $urlRouterProvider.otherwise('/');
 
 });
 
